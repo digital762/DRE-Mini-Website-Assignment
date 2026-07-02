@@ -1,0 +1,38 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 5px var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.solid {
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+}
+
+.bone {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--bh-slate-blue);
+}
+
+.sand {
+  background: var(--bh-sand);
+  color: var(--bh-slate-blue);
+}
+
+.salmon {
+  background: var(--bh-salmon);
+  color: var(--bh-slate-blue);
+}
+
+.outline {
+  background: transparent;
+  color: var(--bh-slate-blue);
+  border: 1px solid var(--border-strong);
+}

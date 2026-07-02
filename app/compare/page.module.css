@@ -1,0 +1,163 @@
+.page {
+  padding: var(--space-12) 0 var(--space-24);
+}
+
+.emptyPage {
+  padding: var(--space-24) 0;
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--type-display-sm);
+  margin-top: var(--space-2);
+}
+
+.emptySub {
+  font-family: var(--font-epic);
+  font-size: var(--type-body-l);
+  color: var(--fg-muted);
+  margin: var(--space-3) 0 var(--space-6);
+  max-width: 520px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--type-display-sm);
+  margin-top: var(--space-2);
+}
+
+.clearBtn {
+  border: 1px solid var(--border-strong);
+  background: var(--bh-white);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.hint {
+  font-family: var(--font-sans);
+  color: var(--fg-muted);
+  margin-top: var(--space-3);
+}
+
+.tableScroll {
+  margin-top: var(--space-8);
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+}
+
+.rowLabelCell {
+  position: sticky;
+  left: 0;
+  background: var(--bh-white);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-weight: 600;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border-default);
+  border-right: 1px solid var(--border-default);
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+.colHead {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+  min-width: 220px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+}
+
+.colActions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.removeBtn {
+  border: none;
+  background: var(--bg-muted);
+  color: var(--fg-default);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.colTitle {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--fg-default);
+}
+
+.colTitle:hover {
+  text-decoration: underline;
+}
+
+.colMeta {
+  font-size: var(--type-body-s);
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+
+.priceCell {
+  font-weight: 600;
+  color: var(--fg-default);
+}
+
+.table :global(td),
+.table :global(th) {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.sectionRow th {
+  background: var(--bg-muted);
+  color: var(--fg-default);
+  text-transform: uppercase;
+  font-size: var(--type-body-xs);
+  letter-spacing: var(--tracking-wide);
+  position: static;
+}
+
+.checkCell {
+  text-align: center;
+}
+
+.yes {
+  color: var(--bh-powder-blue);
+  font-size: 18px;
+}
+
+.no {
+  color: var(--border-strong);
+  font-size: 18px;
+}

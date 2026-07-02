@@ -1,0 +1,133 @@
+@import "./tokens.css";
+
+:root {
+  --font-serif: var(--next-ivymode), "IvyEpic", "Cormorant Garamond", Georgia, serif;
+  --font-display: var(--font-serif);
+  --font-epic: var(--next-cormorant), "Cormorant Garamond", "IvyMode", Georgia, serif;
+  --font-sans: var(--next-poppins), "Poppins", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-body: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-page);
+  color: var(--fg-default);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-l);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+}
+
+.bh-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.bh-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+
+@media (max-width: 720px) {
+  .bh-container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+
+.bh-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.bh-skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -48px;
+  background: var(--bh-white);
+  color: var(--bh-slate-blue);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  z-index: 100;
+  transition: top 150ms ease;
+}
+
+.bh-skip-link:focus {
+  top: var(--space-4);
+}

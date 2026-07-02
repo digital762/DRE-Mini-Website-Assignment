@@ -1,0 +1,43 @@
+.section {
+  padding: var(--space-16) 0;
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.iconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  color: var(--bh-sand);
+  flex-shrink: 0;
+}
+
+.copy {
+  flex: 1;
+  min-width: 240px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: var(--lh-heading);
+}
+
+.sub {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+  color: var(--fg-on-dark-muted);
+  margin-top: var(--space-2);
+}

@@ -1,0 +1,143 @@
+/*
+  Betterhomes design tokens.
+  Source of truth: design-system export (colors_and_type.css).
+  Do not hand-edit values here to work around a component — add a new
+  semantic token instead.
+*/
+
+:root {
+  /* ---- Brand palette ---- */
+  --bh-slate-blue: #1F343F;
+  --bh-denim-blue: #2C537A;
+  --bh-deep-navy: #001E60;
+  --bh-white: #FFFFFF;
+  --bh-off-white: #FAFAFA;
+  --bh-paper: #F9F9F9;
+  --bh-powder-blue: #7BA0B2;
+  --bh-sand: #D9B9A0;
+  --bh-mist: #EDE8E4;
+  --bh-salmon: #FF787A;
+  --bh-slate-blue-60: var(--bh-powder-blue);
+  --bh-slate-blue-90: var(--bh-denim-blue);
+  --bh-bone: var(--bh-mist);
+  --bh-pink: var(--bh-salmon);
+  --bh-ink: #0F1115;
+  --bh-graphite: #545C6C;
+  --bh-blue-gray: #AAB4CA;
+  --bh-line: #DADADA;
+  --bh-line-soft: #F4F5F6;
+
+  /* ---- Neutral scale ---- */
+  --bh-slate-0: #FFFFFF;
+  --bh-slate-50: #F5F7F8;
+  --bh-slate-100: #E6ECEE;
+  --bh-slate-200: #CDD7DC;
+  --bh-slate-300: #A7B7BF;
+  --bh-slate-400: #7C919A;
+  --bh-slate-500: #586E78;
+  --bh-slate-600: #3F555F;
+  --bh-slate-700: #2D4250;
+  --bh-slate-900: #1F343F;
+  --bh-slate-950: #112028;
+
+  /* ---- Semantic surfaces ---- */
+  --bg-page: var(--bh-white);
+  --bg-page-dark: var(--bh-slate-blue);
+  --bg-elevated: var(--bh-white);
+  --bg-muted: var(--bh-paper);
+  --bg-warm: var(--bh-mist);
+  --bg-inverse: var(--bh-slate-blue);
+
+  /* ---- Semantic foreground ---- */
+  --fg-default: var(--bh-slate-blue);
+  --fg-muted: rgba(30, 51, 64, 0.7);
+  --fg-subtle: rgba(30, 51, 64, 0.5);
+  --fg-on-dark: var(--bh-white);
+  --fg-on-dark-muted: rgba(255, 255, 255, 0.7);
+  --fg-on-dark-subtle: rgba(255, 255, 255, 0.5);
+
+  /* ---- Brand roles ---- */
+  --brand-primary: var(--bh-slate-blue);
+  --brand-on-primary: var(--bh-white);
+  --brand-accent: var(--bh-sand);
+
+  /* ---- Borders ---- */
+  --border-default: rgba(30, 51, 64, 0.12);
+  --border-strong: rgba(30, 51, 64, 0.30);
+  --border-on-dark: rgba(255, 255, 255, 0.20);
+  --hairline: 1px solid var(--border-default);
+
+  /* ---- Status ---- */
+  --status-success: var(--bh-powder-blue);
+  --status-info: var(--bh-powder-blue);
+  --status-warn: var(--bh-sand);
+  --status-danger: var(--bh-salmon);
+
+  /* ---- Shadows (soft, restrained) ---- */
+  --shadow-xs: 0 1px 2px rgba(30, 51, 64, 0.06);
+  --shadow-sm: 0 2px 8px rgba(30, 51, 64, 0.06), 0 1px 2px rgba(30, 51, 64, 0.04);
+  --shadow-md: 0 8px 24px rgba(30, 51, 64, 0.08), 0 2px 6px rgba(30, 51, 64, 0.04);
+  --shadow-lg: 0 24px 56px rgba(30, 51, 64, 0.14), 0 8px 16px rgba(30, 51, 64, 0.06);
+  --shadow-overlay: 0 32px 64px rgba(15, 17, 21, 0.32);
+
+  /* ---- Radii ---- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-3xl: 48px;
+  --radius-pill: 999px;
+
+  /* ---- Spacing (8pt scale) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* ---- Fonts (base fallback chains; layout.tsx rebinds the leading
+     family to the loaded next/font variable) ---- */
+  --font-serif: "IvyMode", "IvyEpic", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", "IvyStyle Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-epic: "IvyEpic", "Cormorant Garamond", "IvyMode", Georgia, serif;
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  /* ---- Type scale ---- */
+  --type-display-xl: clamp(56px, 8vw, 96px);
+  --type-display-lg: clamp(44px, 6vw, 72px);
+  --type-display-md: clamp(36px, 5vw, 56px);
+  --type-display-sm: clamp(28px, 4vw, 40px);
+  --type-h1: 43px;
+  --type-h2: 36px;
+  --type-h3: 33px;
+  --type-h4: 28px;
+  --type-subhead-1: 25px;
+  --type-subhead-2: 21px;
+  --type-body-l: 17px;
+  --type-body-m: 14px;
+  --type-body-s: 12px;
+  --type-body-xs: 10px;
+  --type-eyebrow: 12px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.0;
+  --lh-display: 1.1;
+  --lh-heading: 1.2;
+  --lh-body: 1.4;
+  --lh-prose: 1.55;
+
+  /* ---- Tracking ---- */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0em;
+  --tracking-eyebrow: 0.20em;
+  --tracking-wide: 0.10em;
+}
