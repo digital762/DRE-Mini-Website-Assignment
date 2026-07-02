@@ -4,7 +4,7 @@ export type PriceRange = {
   max: number | null;
 };
 
-export const PRICE_RANGES: PriceRange[] = [
+export const SALE_PRICE_RANGES: PriceRange[] = [
   { label: "Any price", min: null, max: null },
   { label: "Under AED 1M", min: null, max: 1_000_000 },
   { label: "AED 1M – 3M", min: 1_000_000, max: 3_000_000 },
@@ -13,8 +13,21 @@ export const PRICE_RANGES: PriceRange[] = [
   { label: "AED 10M+", min: 10_000_000, max: null },
 ];
 
+export const RENT_PRICE_RANGES: PriceRange[] = [
+  { label: "Any price", min: null, max: null },
+  { label: "Under AED 50K/yr", min: null, max: 50_000 },
+  { label: "AED 50K – 100K/yr", min: 50_000, max: 100_000 },
+  { label: "AED 100K – 150K/yr", min: 100_000, max: 150_000 },
+  { label: "AED 150K – 250K/yr", min: 150_000, max: 250_000 },
+  { label: "AED 250K+/yr", min: 250_000, max: null },
+];
+
+// Back-compat alias for the sale price presets used by the homepage search.
+export const PRICE_RANGES = SALE_PRICE_RANGES;
+
 export const BED_OPTIONS = [0, 1, 2, 3, 4, 5];
 
 export function bedLabel(n: number): string {
-  return n === 0 ? "Any beds" : `${n}+ ${n === 1 ? "bed" : "beds"}`;
+  if (n === 0) return "Any beds";
+  return `${n}+ ${n === 1 ? "bed" : "beds"}`;
 }

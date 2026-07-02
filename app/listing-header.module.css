@@ -1,6 +1,20 @@
 .header {
   background: var(--bh-mist);
-  padding: var(--space-12) 0 var(--space-8);
+  padding: var(--space-8) 0 var(--space-8);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  color: var(--fg-muted);
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumb a:hover {
+  color: var(--fg-default);
+  text-decoration: underline;
 }
 
 .title {

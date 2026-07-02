@@ -1,10 +1,14 @@
 import type { Agent } from "@/lib/types";
+import { agentAvatar } from "@/lib/images";
 import styles from "./AgentCard.module.css";
 
 export function AgentCard({ agent }: { agent: Agent }) {
   return (
     <div className={styles.card}>
-      <div className={styles.portrait} style={{ background: agent.gradient }} />
+      <div
+        className={styles.portrait}
+        style={{ backgroundImage: `url(${agentAvatar(agent.email)})` }}
+      />
       <div className={styles.info}>
         <div className={styles.role}>{agent.role}</div>
         <div className={styles.name}>{agent.name}</div>

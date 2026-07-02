@@ -4,6 +4,7 @@ import { Providers } from "@/lib/providers";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CompareTray } from "@/components/CompareTray";
+import { AIConcierge } from "@/components/AIConcierge";
 import "../styles/phosphor/regular/style.css";
 import "../styles/phosphor/fill/style.css";
 import "./globals.css";
@@ -35,6 +36,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
           <CompareTray />
+          <AIConcierge />
         </Providers>
       </body>
     </html>

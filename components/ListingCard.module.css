@@ -24,6 +24,9 @@
   flex-direction: column;
   justify-content: space-between;
   padding: var(--space-4);
+  background-color: var(--bh-slate-200);
+  background-size: cover;
+  background-position: center;
 }
 
 .photo::after {
@@ -67,6 +70,14 @@
   font-size: 28px;
   letter-spacing: var(--tracking-tight);
   line-height: var(--lh-tight);
+}
+
+.perYear {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  font-weight: 400;
+  opacity: 0.85;
+  margin-left: 2px;
 }
 
 .pricePerSqft {

@@ -10,6 +10,50 @@
   max-width: 980px;
 }
 
+.askBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+}
+
+.askBar i {
+  color: var(--bh-powder-blue);
+  font-size: 18px;
+}
+
+.askBar input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+  color: var(--fg-default);
+}
+
+.askBtn {
+  border: none;
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--type-body-s);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.orDivider {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-xs);
+  color: var(--fg-subtle);
+}
+
 .row1 {
   display: flex;
   align-items: center;

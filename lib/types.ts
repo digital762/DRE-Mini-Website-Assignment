@@ -2,6 +2,12 @@ export type PropertyType = "Apartment" | "Villa" | "Townhouse" | "Penthouse";
 
 export type CompletionStatus = "Ready" | "Off-plan";
 
+export type DealType = "Sale" | "Rent";
+
+export type FurnishingStatus = "Furnished" | "Unfurnished" | "Partly furnished";
+
+export type RentFrequency = "Yearly" | "Monthly";
+
 export type Agent = {
   name: string;
   role: string;
@@ -10,12 +16,11 @@ export type Agent = {
   deals: number;
   phone: string;
   email: string;
-  gradient: string;
 };
 
 export type GalleryPhoto = {
   label: string;
-  gradient: string;
+  url: string;
 };
 
 export type Listing = {
@@ -25,6 +30,9 @@ export type Listing = {
   subCommunity?: string;
   type: PropertyType;
   status: CompletionStatus;
+  dealType: DealType;
+  furnished?: FurnishingStatus;
+  rentFrequency?: RentFrequency;
   tag?: string;
   price: number;
   beds: number;
@@ -32,7 +40,7 @@ export type Listing = {
   sqft: number;
   description: string;
   amenities: string[];
-  gradient: string;
+  photo: string;
   gallery: GalleryPhoto[];
   agent: Agent;
   featured: boolean;

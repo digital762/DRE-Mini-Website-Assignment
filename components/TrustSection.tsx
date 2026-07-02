@@ -25,7 +25,7 @@ export function TrustSection() {
           <div className={styles.estRow}>
             <EstBadge size={20} />
           </div>
-          <Button href="/listings" variant="secondary" iconRight="arrow-right">
+          <Button href="/properties-for-sale" variant="secondary" iconRight="arrow-right">
             Browse listings
           </Button>
         </div>

@@ -22,7 +22,7 @@ export default function FavouritesPage() {
         {count === 0 ? (
           <div className={styles.empty}>
             <p>Nothing saved yet. Tap the heart on any listing to keep it here.</p>
-            <Button href="/listings" variant="primary" iconRight="arrow-right">
+            <Button href="/properties-for-sale" variant="primary" iconRight="arrow-right">
               Browse listings
             </Button>
           </div>

@@ -11,6 +11,9 @@
   display: flex;
   align-items: flex-end;
   padding: var(--space-5);
+  background-color: var(--bh-slate-200);
+  background-size: cover;
+  background-position: center;
 }
 
 .label {
@@ -37,6 +40,9 @@
   border: 2px solid transparent;
   cursor: pointer;
   padding: 0;
+  background-color: var(--bh-slate-200);
+  background-size: cover;
+  background-position: center;
 }
 
 .thumbActive {

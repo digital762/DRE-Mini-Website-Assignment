@@ -21,7 +21,7 @@ export default function ComparePage() {
           <p className={styles.emptySub}>
             Tick &ldquo;Compare&rdquo; on any listing card to line properties up side by side.
           </p>
-          <Button href="/listings" variant="primary" iconRight="arrow-right">
+          <Button href="/properties-for-sale" variant="primary" iconRight="arrow-right">
             Browse listings
           </Button>
         </div>
@@ -56,7 +56,7 @@ export default function ComparePage() {
                 <th className={styles.rowLabelCell}>&nbsp;</th>
                 {listings.map((listing) => (
                   <th key={listing.id} className={styles.colHead}>
-                    <div className={styles.photo} style={{ background: listing.gradient }} />
+                    <div className={styles.photo} style={{ backgroundImage: `url(${listing.photo})` }} />
                     <div className={styles.colActions}>
                       <FavouriteButton listingId={listing.id} size="sm" />
                       <button

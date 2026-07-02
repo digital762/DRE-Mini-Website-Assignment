@@ -19,7 +19,13 @@ export function CompareTray() {
       <div className={`bh-container ${styles.inner}`}>
         <div className={styles.chips}>
           {listings.map((listing) => (
-            <div key={listing!.id} className={styles.chip} style={{ background: listing!.gradient }}>
+            <div
+              key={listing!.id}
+              className={styles.chip}
+              style={{
+                backgroundImage: `linear-gradient(rgba(15,17,21,0.45), rgba(15,17,21,0.45)), url(${listing!.photo})`,
+              }}
+            >
               <span>{listing!.title}</span>
               <button
                 type="button"

@@ -14,7 +14,7 @@ export function FeaturedListings() {
             <div className="bh-eyebrow">Hot properties</div>
             <h2 className={styles.heading}>This week, across the city.</h2>
           </div>
-          <Button href="/listings" variant="ghost" iconRight="arrow-right">
+          <Button href="/properties-for-sale" variant="ghost" iconRight="arrow-right">
             View all listings
           </Button>
         </div>

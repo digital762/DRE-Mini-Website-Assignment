@@ -32,7 +32,7 @@ export function Hero() {
             <button
               key={c}
               type="button"
-              onClick={() => router.push(`/listings?community=${encodeURIComponent(c)}`)}
+              onClick={() => router.push(`/properties-for-sale?community=${encodeURIComponent(c)}`)}
             >
               {c}
             </button>

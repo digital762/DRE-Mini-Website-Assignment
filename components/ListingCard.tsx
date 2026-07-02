@@ -13,12 +13,20 @@ export function ListingCard({
   listing: Listing;
   layout?: "grid" | "list";
 }) {
+  const isRent = listing.dealType === "Rent";
+  const bedsLabel = listing.beds === 0 ? "Studio" : `${listing.beds} bed`;
+
   return (
     <article className={[styles.card, layout === "list" ? styles.list : ""].filter(Boolean).join(" ")}>
       <Link href={`/listings/${listing.id}`} className={styles.photoLink}>
-        <div className={styles.photo} style={{ background: listing.gradient }}>
+        <div
+          className={styles.photo}
+          style={{ backgroundImage: `url(${listing.photo})` }}
+        >
           <div className={styles.photoTopRow}>
-            <Badge variant="bone">{listing.status === "Off-plan" ? "Off-plan" : "For sale"}</Badge>
+            <Badge variant="bone">
+              {isRent ? "For rent" : listing.status === "Off-plan" ? "Off-plan" : "For sale"}
+            </Badge>
             <div className={styles.photoTopRight}>
               <FavouriteButton listingId={listing.id} size="sm" />
             </div>
@@ -29,7 +37,10 @@ export function ListingCard({
             </div>
           )}
           <div className={styles.priceOverlay}>
-            <div className={styles.price}>{formatAEDCompact(listing.price)}</div>
+            <div className={styles.price}>
+              {formatAEDCompact(listing.price)}
+              {isRent && <span className={styles.perYear}>/yr</span>}
+            </div>
             <div className={styles.pricePerSqft}>{formatPricePerSqft(listing.price, listing.sqft)}</div>
           </div>
         </div>
@@ -47,7 +58,7 @@ export function ListingCard({
 
         <div className={styles.statsRow}>
           <span className={styles.stat}>
-            <i className="ph ph-bed" aria-hidden /> {listing.beds} bed
+            <i className="ph ph-bed" aria-hidden /> {bedsLabel}
           </span>
           <span className={styles.stat}>
             <i className="ph ph-bathtub" aria-hidden /> {listing.baths} bath
