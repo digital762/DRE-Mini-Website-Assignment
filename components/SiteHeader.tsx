@@ -1,20 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Wordmark } from "./Wordmark";
 import { useFavourites, useCompare } from "@/lib/providers";
 import styles from "./SiteHeader.module.css";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/listings", label: "Listings" },
-  { href: "/mortgage-calculator", label: "Mortgage calculator" },
+  { href: "/listings", label: "Buy" },
+  { href: "/listings", label: "Rent" },
+  { href: "/listings", label: "Commercial" },
+  { href: "/listings?status=Off-plan", label: "Off-plan" },
+  { href: "/listings?minPrice=5000000", label: "Luxury" },
+  { href: "#", label: "International" },
+  { href: "/mortgage-calculator", label: "Services" },
+  { href: "#", label: "Insights" },
+  { href: "#", label: "Careers" },
+  { href: "/#why-betterhomes", label: "About" },
 ];
 
 export function SiteHeader() {
-  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const favourites = useFavourites();
   const compare = useCompare();
@@ -23,23 +28,20 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={`bh-container ${styles.inner}`}>
         <Link href="/" className={styles.brand} onClick={() => setMenuOpen(false)}>
-          <Wordmark height={18} />
+          <Wordmark height={22} />
         </Link>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
-          {NAV_ITEMS.map((item) => {
-            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`${styles.navLink} ${active ? styles.navLinkActive : ""}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={styles.navLink}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
           <div className={styles.navActionsMobile}>
             <Link href="/favourites" className={styles.iconLink} onClick={() => setMenuOpen(false)}>
               <i className="ph ph-heart" aria-hidden />
@@ -66,7 +68,7 @@ export function SiteHeader() {
             </span>
           </Link>
           <a href="mailto:hello@bhomes.com" className={styles.cta}>
-            Get in touch
+            List your property
           </a>
           <button
             type="button"

@@ -2,9 +2,12 @@ import { COMMUNITIES, PROPERTY_TYPES } from "@/lib/listings";
 import type { PropertyType } from "@/lib/types";
 import styles from "./FilterSidebar.module.css";
 
+export type StatusFilter = "All" | "Ready" | "Off-plan";
+
 export type Filters = {
   communities: string[];
   types: PropertyType[];
+  status: StatusFilter;
   minPrice: string;
   maxPrice: string;
   minBeds: number;
@@ -13,6 +16,7 @@ export type Filters = {
 export const EMPTY_FILTERS: Filters = {
   communities: [],
   types: [],
+  status: "All",
   minPrice: "",
   maxPrice: "",
   minBeds: 0,
@@ -42,6 +46,7 @@ export function FilterSidebar({
   const hasActiveFilters =
     filters.communities.length > 0 ||
     filters.types.length > 0 ||
+    filters.status !== "All" ||
     filters.minPrice !== "" ||
     filters.maxPrice !== "" ||
     filters.minBeds > 0;
@@ -85,6 +90,24 @@ export function FilterSidebar({
               />
               {type}
             </label>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <div className={styles.sectionTitle}>Status</div>
+        <div className={styles.bedRow}>
+          {(["All", "Ready", "Off-plan"] as const).map((status) => (
+            <button
+              key={status}
+              type="button"
+              className={[styles.bedChip, filters.status === status ? styles.bedChipActive : ""]
+                .filter(Boolean)
+                .join(" ")}
+              onClick={() => onChange({ ...filters, status })}
+            >
+              {status}
+            </button>
           ))}
         </div>
       </div>

@@ -11,7 +11,7 @@ const STATS = [
 
 export function TrustSection() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="why-betterhomes">
       <div className={`bh-container ${styles.inner}`}>
         <div className={styles.copy}>
           <div className="bh-eyebrow">Why betterhomes</div>

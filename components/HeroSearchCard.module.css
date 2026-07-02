@@ -1,0 +1,181 @@
+.card {
+  background: var(--bh-white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 980px;
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.dealToggle {
+  display: flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--bg-muted);
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.deal,
+.dealActive {
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--bh-slate-blue);
+  white-space: nowrap;
+}
+
+.dealActive {
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+}
+
+.locationField {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-5);
+  color: var(--fg-muted);
+}
+
+.locationField input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+  color: var(--fg-default);
+}
+
+.searchBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: none;
+  background: var(--bh-salmon);
+  color: var(--bh-slate-blue);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--type-body-m);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.statusToggle {
+  display: flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--bg-muted);
+  border-radius: var(--radius-pill);
+}
+
+.status,
+.statusActive {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--bh-slate-blue);
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
+}
+
+.selectField {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-4);
+}
+
+.selectField select {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  font-weight: 500;
+  color: var(--fg-default);
+  padding: var(--space-3) 0;
+}
+
+.selectField i {
+  color: var(--fg-muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .row1 {
+    flex-wrap: wrap;
+  }
+
+  .locationField {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .searchBtn {
+    order: 4;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-4);
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+}

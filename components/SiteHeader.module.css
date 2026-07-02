@@ -2,9 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bh-mist);
   border-bottom: 1px solid var(--border-default);
 }
 
@@ -25,8 +23,10 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  justify-content: center;
+  gap: var(--space-5);
   flex: 1;
+  flex-wrap: nowrap;
 }
 
 .navActionsMobile {
@@ -35,40 +35,32 @@
 
 .navLink {
   font-family: var(--font-sans);
-  font-size: var(--type-body-m);
-  font-weight: 500;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-pill);
-  color: var(--fg-default);
-  transition: background 150ms ease;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bh-slate-blue);
+  white-space: nowrap;
+  padding: var(--space-1) 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 150ms ease;
 }
 
 .navLink:hover {
-  background: var(--bg-muted);
-}
-
-.navLinkActive {
-  background: var(--bh-slate-blue);
-  color: var(--bh-white);
-}
-
-.navLinkActive:hover {
-  background: var(--bh-slate-blue);
+  border-bottom-color: var(--bh-sand);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   flex-shrink: 0;
 }
 
 .iconLink {
-  color: var(--fg-default);
+  color: var(--bh-slate-blue);
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .iconWrap {
@@ -80,8 +72,8 @@
   position: absolute;
   top: -6px;
   right: -8px;
-  background: var(--bh-salmon);
-  color: var(--bh-slate-blue);
+  background: var(--bh-slate-blue);
+  color: var(--bh-white);
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 700;
@@ -98,8 +90,8 @@
   color: var(--bh-slate-blue);
   font-family: var(--font-sans);
   font-size: var(--type-body-s);
-  font-weight: 500;
-  padding: var(--space-2) var(--space-4);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
@@ -109,17 +101,13 @@
   border: none;
   background: transparent;
   font-size: 24px;
-  color: var(--fg-default);
+  color: var(--bh-slate-blue);
   cursor: pointer;
   padding: var(--space-1);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .nav {
-    display: none;
-  }
-
-  .cta {
     display: none;
   }
 
@@ -144,6 +132,7 @@
 
   .nav.navOpen .navLink {
     padding: var(--space-3) var(--space-4);
+    border-bottom: none;
   }
 
   .navActionsMobile {
@@ -162,5 +151,12 @@
 
   .actions .iconLink {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta {
+    padding: var(--space-2) var(--space-4);
+    font-size: 13px;
   }
 }

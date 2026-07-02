@@ -23,10 +23,18 @@ export function ListingsExplorer() {
   const [filters, setFilters] = useState<Filters>(() => {
     const community = searchParams.get("community");
     const type = searchParams.get("type");
+    const status = searchParams.get("status");
+    const minPrice = searchParams.get("minPrice");
+    const maxPrice = searchParams.get("maxPrice");
+    const minBeds = Number(searchParams.get("minBeds") ?? 0);
     return {
       ...EMPTY_FILTERS,
       communities: community && COMMUNITIES.includes(community) ? [community] : [],
       types: type && PROPERTY_TYPES.includes(type as PropertyType) ? [type as PropertyType] : [],
+      status: status === "Ready" || status === "Off-plan" ? status : "All",
+      minPrice: minPrice ?? "",
+      maxPrice: maxPrice ?? "",
+      minBeds: Number.isFinite(minBeds) ? Math.min(Math.max(minBeds, 0), 5) : 0,
     };
   });
   const [query] = useState(() => (searchParams.get("q") ?? "").trim().toLowerCase());
@@ -41,6 +49,7 @@ export function ListingsExplorer() {
     const filtered = LISTINGS.filter((listing) => {
       if (filters.communities.length && !filters.communities.includes(listing.community)) return false;
       if (filters.types.length && !filters.types.includes(listing.type)) return false;
+      if (filters.status !== "All" && listing.status !== filters.status) return false;
       if (min !== null && listing.price < min) return false;
       if (max !== null && listing.price > max) return false;
       if (listing.beds < filters.minBeds) return false;
