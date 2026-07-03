@@ -1,22 +1,35 @@
-import type { Agent, GalleryPhoto, Listing } from "./types";
+import type { Agent, GalleryPhoto, Listing, PropertyType } from "./types";
 import { propertyPhoto } from "./images";
 
-const ROOM_LABELS = [
-  "Living room",
-  "Primary bedroom",
-  "Kitchen",
-  "Balcony view",
-  "Exterior",
-  "Bathroom",
-  "Dining area",
-  "Pool deck",
+// Keywords per property type for the card/hero cover photo.
+const TYPE_KEYWORDS: Record<PropertyType, string> = {
+  Apartment: "modern-apartment,dubai,building",
+  Villa: "luxury-villa,house,pool",
+  Townhouse: "townhouse,modern,house",
+  Penthouse: "penthouse,skyline,luxury",
+};
+
+// Room label -> keywords, for gallery photos.
+const ROOM_KEYWORDS: [string, string][] = [
+  ["Living room", "living-room,interior,modern"],
+  ["Primary bedroom", "bedroom,interior,modern"],
+  ["Kitchen", "kitchen,modern,interior"],
+  ["Balcony view", "balcony,view,city"],
+  ["Exterior", "house,exterior,modern"],
+  ["Bathroom", "bathroom,modern,interior"],
+  ["Dining area", "dining-room,interior"],
+  ["Pool deck", "swimming-pool,luxury"],
 ];
 
+function mainPhoto(id: string, type: PropertyType): string {
+  return propertyPhoto(id, TYPE_KEYWORDS[type]);
+}
+
 function gallery(id: string, count: number): GalleryPhoto[] {
-  return Array.from({ length: count }, (_, i) => ({
-    label: ROOM_LABELS[i % ROOM_LABELS.length],
-    url: propertyPhoto(`${id}-${i}`),
-  }));
+  return Array.from({ length: count }, (_, i) => {
+    const [label, keywords] = ROOM_KEYWORDS[i % ROOM_KEYWORDS.length];
+    return { label, url: propertyPhoto(`${id}-${i}`, keywords) };
+  });
 }
 
 const AGENTS: Record<string, Agent> = {
@@ -111,7 +124,7 @@ const SALE_LISTINGS: Listing[] = [
       "Balcony",
       "Built-in wardrobes",
     ],
-    photo: propertyPhoto("marina-gate-tower-2-24f"),
+    photo: mainPhoto("marina-gate-tower-2-24f", "Apartment"),
     gallery: gallery("marina-gate-tower-2-24f", 5),
     agent: AGENTS.james,
     featured: true,
@@ -142,7 +155,7 @@ const SALE_LISTINGS: Listing[] = [
       "Landscaped garden",
       "Covered parking (4)",
     ],
-    photo: propertyPhoto("palm-jumeirah-frond-d-signature-villa"),
+    photo: mainPhoto("palm-jumeirah-frond-d-signature-villa", "Villa"),
     gallery: gallery("palm-jumeirah-frond-d-signature-villa", 6),
     agent: AGENTS.priya,
     featured: true,
@@ -173,7 +186,7 @@ const SALE_LISTINGS: Listing[] = [
       "Smart home",
       "Study",
     ],
-    photo: propertyPhoto("burj-vista-56f-penthouse"),
+    photo: mainPhoto("burj-vista-56f-penthouse", "Penthouse"),
     gallery: gallery("burj-vista-56f-penthouse", 5),
     agent: AGENTS.omar,
     featured: true,
@@ -204,7 +217,7 @@ const SALE_LISTINGS: Listing[] = [
       "Balcony",
       "24/7 security",
     ],
-    photo: propertyPhoto("rimal-4-jbr-2br"),
+    photo: mainPhoto("rimal-4-jbr-2br", "Apartment"),
     gallery: gallery("rimal-4-jbr-2br", 4),
     agent: AGENTS.james,
     featured: false,
@@ -233,7 +246,7 @@ const SALE_LISTINGS: Listing[] = [
       "Built-in wardrobes",
       "Central AC",
     ],
-    photo: propertyPhoto("executive-towers-business-bay-1br"),
+    photo: mainPhoto("executive-towers-business-bay-1br", "Apartment"),
     gallery: gallery("executive-towers-business-bay-1br", 3),
     agent: AGENTS.chen,
     featured: false,
@@ -263,7 +276,7 @@ const SALE_LISTINGS: Listing[] = [
       "Built-in wardrobes",
       "Pet friendly",
     ],
-    photo: propertyPhoto("district-12-jvc-townhouse"),
+    photo: mainPhoto("district-12-jvc-townhouse", "Townhouse"),
     gallery: gallery("district-12-jvc-townhouse", 4),
     agent: AGENTS.fatima,
     featured: true,
@@ -293,7 +306,7 @@ const SALE_LISTINGS: Listing[] = [
       "Covered parking (3)",
       "Smart home",
     ],
-    photo: propertyPhoto("sidra-3-dubai-hills-villa"),
+    photo: mainPhoto("sidra-3-dubai-hills-villa", "Villa"),
     gallery: gallery("sidra-3-dubai-hills-villa", 5),
     agent: AGENTS.fatima,
     featured: false,
@@ -322,7 +335,7 @@ const SALE_LISTINGS: Listing[] = [
       "Built-in wardrobes",
       "Pet friendly",
     ],
-    photo: propertyPhoto("alma-arabian-ranches-villa"),
+    photo: mainPhoto("alma-arabian-ranches-villa", "Villa"),
     gallery: gallery("alma-arabian-ranches-villa", 4),
     agent: AGENTS.fatima,
     featured: false,
@@ -352,7 +365,7 @@ const SALE_LISTINGS: Listing[] = [
       "Study",
       "Central AC",
     ],
-    photo: propertyPhoto("index-tower-difc-3br"),
+    photo: mainPhoto("index-tower-difc-3br", "Apartment"),
     gallery: gallery("index-tower-difc-3br", 4),
     agent: AGENTS.chen,
     featured: false,
@@ -382,7 +395,7 @@ const SALE_LISTINGS: Listing[] = [
       "Covered parking",
       "Balcony",
     ],
-    photo: propertyPhoto("central-park-city-walk-2br"),
+    photo: mainPhoto("central-park-city-walk-2br", "Apartment"),
     gallery: gallery("central-park-city-walk-2br", 4),
     agent: AGENTS.omar,
     featured: false,
@@ -410,7 +423,7 @@ const SALE_LISTINGS: Listing[] = [
       "Pet friendly",
       "Central AC",
     ],
-    photo: propertyPhoto("zahra-town-square-townhouse"),
+    photo: mainPhoto("zahra-town-square-townhouse", "Townhouse"),
     gallery: gallery("zahra-town-square-townhouse", 3),
     agent: AGENTS.fatima,
     featured: false,
@@ -440,7 +453,7 @@ const SALE_LISTINGS: Listing[] = [
       "Study",
       "Smart home",
     ],
-    photo: propertyPhoto("redwood-park-jge-villa"),
+    photo: mainPhoto("redwood-park-jge-villa", "Villa"),
     gallery: gallery("redwood-park-jge-villa", 5),
     agent: AGENTS.fatima,
     featured: false,
@@ -470,7 +483,7 @@ const SALE_LISTINGS: Listing[] = [
       "Smart home",
       "Study",
     ],
-    photo: propertyPhoto("bluewaters-residences-penthouse"),
+    photo: mainPhoto("bluewaters-residences-penthouse", "Penthouse"),
     gallery: gallery("bluewaters-residences-penthouse", 4),
     agent: AGENTS.james,
     featured: true,
@@ -499,7 +512,7 @@ const SALE_LISTINGS: Listing[] = [
       "Kids play area",
       "Central AC",
     ],
-    photo: propertyPhoto("harbour-views-creek-harbour-1br"),
+    photo: mainPhoto("harbour-views-creek-harbour-1br", "Apartment"),
     gallery: gallery("harbour-views-creek-harbour-1br", 3),
     agent: AGENTS.omar,
     featured: false,
@@ -530,7 +543,7 @@ const SALE_LISTINGS: Listing[] = [
       "Covered parking (5)",
       "Landscaped garden",
     ],
-    photo: propertyPhoto("emirates-hills-signature-villa"),
+    photo: mainPhoto("emirates-hills-signature-villa", "Villa"),
     gallery: gallery("emirates-hills-signature-villa", 6),
     agent: AGENTS.priya,
     featured: false,
@@ -564,7 +577,7 @@ const RENT_LISTINGS: Listing[] = [
       "Central AC",
       "Pet friendly",
     ],
-    photo: propertyPhoto("al-nahda-2-family-1bhk"),
+    photo: mainPhoto("al-nahda-2-family-1bhk", "Apartment"),
     gallery: gallery("al-nahda-2-family-1bhk", 4),
     agent: AGENTS.arjun,
     featured: true,
@@ -596,7 +609,7 @@ const RENT_LISTINGS: Listing[] = [
       "Balcony",
       "Smart home",
     ],
-    photo: propertyPhoto("marina-gate-1-2br-rent"),
+    photo: mainPhoto("marina-gate-1-2br-rent", "Apartment"),
     gallery: gallery("marina-gate-1-2br-rent", 4),
     agent: AGENTS.layla,
     featured: true,
@@ -620,7 +633,7 @@ const RENT_LISTINGS: Listing[] = [
     description:
       "A compact, fully furnished studio in a newly handed-over JVC building. Great starter rental with a rooftop pool and gym, and easy access to Circle Mall.",
     amenities: ["Shared pool", "Gym", "Covered parking", "Central AC", "Built-in wardrobes"],
-    photo: propertyPhoto("jvc-district-14-studio"),
+    photo: mainPhoto("jvc-district-14-studio", "Apartment"),
     gallery: gallery("jvc-district-14-studio", 3),
     agent: AGENTS.layla,
     featured: false,
@@ -651,7 +664,7 @@ const RENT_LISTINGS: Listing[] = [
       "Valet parking",
       "Study",
     ],
-    photo: propertyPhoto("downtown-boulevard-central-2br"),
+    photo: mainPhoto("downtown-boulevard-central-2br", "Apartment"),
     gallery: gallery("downtown-boulevard-central-2br", 4),
     agent: AGENTS.arjun,
     featured: true,
@@ -682,7 +695,7 @@ const RENT_LISTINGS: Listing[] = [
       "Built-in wardrobes",
       "Pet friendly",
     ],
-    photo: propertyPhoto("arabian-ranches-mirador-4br"),
+    photo: mainPhoto("arabian-ranches-mirador-4br", "Villa"),
     gallery: gallery("arabian-ranches-mirador-4br", 4),
     agent: AGENTS.fatima,
     featured: false,
@@ -713,7 +726,7 @@ const RENT_LISTINGS: Listing[] = [
       "Kids play area",
       "Covered parking",
     ],
-    photo: propertyPhoto("jbr-amwaj-3br-rent"),
+    photo: mainPhoto("jbr-amwaj-3br-rent", "Apartment"),
     gallery: gallery("jbr-amwaj-3br-rent", 4),
     agent: AGENTS.layla,
     featured: false,
@@ -737,7 +750,7 @@ const RENT_LISTINGS: Listing[] = [
     description:
       "A one-bedroom in DIFC's Central Park Towers, unfurnished with premium fittings throughout. Walking distance to Gate Avenue and the financial district's metro link.",
     amenities: ["Skyline view", "Shared pool", "Gym", "Concierge", "Valet parking"],
-    photo: propertyPhoto("difc-central-park-1br-rent"),
+    photo: mainPhoto("difc-central-park-1br-rent", "Apartment"),
     gallery: gallery("difc-central-park-1br-rent", 3),
     agent: AGENTS.arjun,
     featured: false,
@@ -760,7 +773,7 @@ const RENT_LISTINGS: Listing[] = [
     description:
       "A park-backing townhouse in Hayat, Town Square, unfurnished and ready for immediate move-in. Community pool, splash park, and retail all within walking distance.",
     amenities: ["Shared pool", "Community park", "Covered parking (2)", "Built-in wardrobes", "Pet friendly"],
-    photo: propertyPhoto("town-square-hayat-townhouse-rent"),
+    photo: mainPhoto("town-square-hayat-townhouse-rent", "Townhouse"),
     gallery: gallery("town-square-hayat-townhouse-rent", 3),
     agent: AGENTS.layla,
     featured: false,
@@ -784,7 +797,7 @@ const RENT_LISTINGS: Listing[] = [
     description:
       "A furnished two-bedroom overlooking City Walk's boulevard, with a wraparound balcony. Boutique retail, cinema, and dining all on the doorstep.",
     amenities: ["Boulevard view", "Shared pool", "Gym", "Concierge", "Covered parking", "Balcony"],
-    photo: propertyPhoto("city-walk-2br-rent"),
+    photo: mainPhoto("city-walk-2br-rent", "Apartment"),
     gallery: gallery("city-walk-2br-rent", 4),
     agent: AGENTS.arjun,
     featured: true,
@@ -808,7 +821,7 @@ const RENT_LISTINGS: Listing[] = [
     description:
       "An unfurnished three-bedroom overlooking Dubai Hills Park, in a low-density building with direct park access. Close to Dubai Hills Mall and the golf course.",
     amenities: ["Park view", "Shared pool", "Gym", "Covered parking", "Kids play area", "Built-in wardrobes"],
-    photo: propertyPhoto("dubai-hills-parkway-3br-rent"),
+    photo: mainPhoto("dubai-hills-parkway-3br-rent", "Apartment"),
     gallery: gallery("dubai-hills-parkway-3br-rent", 3),
     agent: AGENTS.fatima,
     featured: false,

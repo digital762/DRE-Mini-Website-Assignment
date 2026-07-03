@@ -7,16 +7,10 @@ import { useFavourites, useCompare } from "@/lib/providers";
 import styles from "./SiteHeader.module.css";
 
 const NAV_ITEMS = [
-  { href: "/properties-for-sale", label: "Buy" },
   { href: "/properties-for-rent", label: "Rent" },
-  { href: "/properties-for-sale", label: "Commercial" },
-  { href: "/properties-for-sale?status=Off-plan", label: "Off-plan" },
-  { href: "/properties-for-sale?minPrice=5000000", label: "Luxury" },
-  { href: "#", label: "International" },
-  { href: "/mortgage-calculator", label: "Services" },
-  { href: "#", label: "Insights" },
-  { href: "#", label: "Careers" },
-  { href: "/#why-betterhomes", label: "About" },
+  { href: "/properties-for-sale", label: "Buy" },
+  { href: "/careers", label: "Careers" },
+  { href: "/about", label: "About" },
 ];
 
 export function SiteHeader() {

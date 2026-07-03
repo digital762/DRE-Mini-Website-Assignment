@@ -4,6 +4,7 @@ import type { DealType, Listing, PropertyType } from "./types";
 
 export type ParsedQuery = {
   minBeds: number | null;
+  minBaths: number | null;
   type: PropertyType | null;
   community: string | null;
   minPrice: number | null;
@@ -72,6 +73,10 @@ export function parseQuery(text: string): ParsedQuery {
   if (bedMatch) minBeds = parseInt(bedMatch[1], 10);
   if (/\bstudio\b/.test(q)) minBeds = 0;
 
+  let minBaths: number | null = null;
+  const bathMatch = q.match(/(\d+)\s*-?\s*(?:bath|bathroom|ba)\b/);
+  if (bathMatch) minBaths = parseInt(bathMatch[1], 10);
+
   let type: PropertyType | null = null;
   for (const t of PROPERTY_TYPES) {
     if (q.includes(t.toLowerCase())) {
@@ -120,12 +125,13 @@ export function parseQuery(text: string): ParsedQuery {
   if (/\brent(al|ing)?\b|\bto let\b|\blease\b/.test(q)) dealTypeHint = "Rent";
   else if (/\bbuy\b|\bpurchase\b|\bfor sale\b|\bsale\b/.test(q)) dealTypeHint = "Sale";
 
-  return { minBeds, type, community, minPrice, maxPrice, amenityKeywords, dealTypeHint };
+  return { minBeds, minBaths, type, community, minPrice, maxPrice, amenityKeywords, dealTypeHint };
 }
 
 export function matchListings(listings: Listing[], parsed: ParsedQuery): Listing[] {
   return listings.filter((listing) => {
     if (parsed.minBeds !== null && listing.beds !== parsed.minBeds) return false;
+    if (parsed.minBaths !== null && listing.baths < parsed.minBaths) return false;
     if (parsed.type && listing.type !== parsed.type) return false;
     if (parsed.community && listing.community !== parsed.community) return false;
     if (parsed.minPrice !== null && listing.price < parsed.minPrice) return false;
@@ -142,6 +148,7 @@ export function explainQuery(parsed: ParsedQuery, count: number, dealType: DealT
   const bits: string[] = [];
   if (parsed.minBeds !== null) bits.push(parsed.minBeds === 0 ? "studio" : `${parsed.minBeds}-bedroom`);
   bits.push(parsed.type ? parsed.type.toLowerCase() + (count === 1 ? "" : "s") : dealType === "Rent" ? "rentals" : "properties");
+  if (parsed.minBaths !== null) bits.push(`with ${parsed.minBaths}+ bathrooms`);
   if (parsed.community) bits.push(`in ${parsed.community}`);
   if (parsed.amenityKeywords.length) {
     bits.push(`with ${parsed.amenityKeywords.map((kw) => AMENITY_LABELS[kw] ?? kw).join(" and ")}`);

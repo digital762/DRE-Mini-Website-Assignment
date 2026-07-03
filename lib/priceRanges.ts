@@ -26,8 +26,14 @@ export const RENT_PRICE_RANGES: PriceRange[] = [
 export const PRICE_RANGES = SALE_PRICE_RANGES;
 
 export const BED_OPTIONS = [0, 1, 2, 3, 4, 5];
+export const BATH_OPTIONS = [0, 1, 2, 3, 4, 5];
 
 export function bedLabel(n: number): string {
   if (n === 0) return "Any beds";
   return `${n}+ ${n === 1 ? "bed" : "beds"}`;
+}
+
+export function bathLabel(n: number): string {
+  if (n === 0) return "Any baths";
+  return `${n}+ ${n === 1 ? "bath" : "baths"}`;
 }

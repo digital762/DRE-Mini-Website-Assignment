@@ -39,6 +39,13 @@
   padding: var(--space-2) 0;
 }
 
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;

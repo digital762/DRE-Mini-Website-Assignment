@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { LISTINGS, COMMUNITIES, PROPERTY_TYPES } from "@/lib/listings";
 import type { DealType, Listing, PropertyType } from "@/lib/types";
-import { SALE_PRICE_RANGES, RENT_PRICE_RANGES, BED_OPTIONS, bedLabel } from "@/lib/priceRanges";
+import { SALE_PRICE_RANGES, RENT_PRICE_RANGES, BED_OPTIONS, BATH_OPTIONS, bedLabel, bathLabel } from "@/lib/priceRanges";
 import { parseQuery, explainQuery, amenityHaystack, type ParsedQuery } from "@/lib/aiSearch";
 import { ListingCard } from "./ListingCard";
 import { PropertyRow } from "./PropertyRow";
@@ -26,6 +26,7 @@ type ExplorerFilters = {
   types: PropertyType[];
   secondary: string;
   minBeds: number;
+  minBaths: number;
   minPrice: string;
   maxPrice: string;
   amenityKeywords: string[];
@@ -36,6 +37,7 @@ const EMPTY: ExplorerFilters = {
   types: [],
   secondary: "All",
   minBeds: 0,
+  minBaths: 0,
   minPrice: "",
   maxPrice: "",
   amenityKeywords: [],
@@ -55,6 +57,7 @@ function applyFilters(dataset: Listing[], dealType: DealType, filters: ExplorerF
     if (min !== null && listing.price < min) return false;
     if (max !== null && listing.price > max) return false;
     if (listing.beds < filters.minBeds) return false;
+    if (listing.baths < filters.minBaths) return false;
     if (filters.amenityKeywords.length) {
       const haystack = amenityHaystack(listing);
       if (!filters.amenityKeywords.every((kw) => haystack.includes(kw))) return false;
@@ -69,6 +72,7 @@ function parsedToFilters(parsed: ParsedQuery, base: ExplorerFilters): ExplorerFi
     communities: parsed.community ? [parsed.community] : base.communities,
     types: parsed.type ? [parsed.type] : base.types,
     minBeds: parsed.minBeds !== null ? parsed.minBeds : base.minBeds,
+    minBaths: parsed.minBaths !== null ? parsed.minBaths : base.minBaths,
     minPrice: parsed.minPrice !== null ? String(parsed.minPrice) : base.minPrice,
     maxPrice: parsed.maxPrice !== null ? String(parsed.maxPrice) : base.maxPrice,
     amenityKeywords: parsed.amenityKeywords,
@@ -88,6 +92,7 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
     const type = searchParams.get("type");
     const secondary = searchParams.get("status") ?? searchParams.get("furnished");
     const minBeds = Number(searchParams.get("minBeds") ?? 0);
+    const minBaths = Number(searchParams.get("minBaths") ?? 0);
     const minPrice = searchParams.get("minPrice") ?? "";
     const maxPrice = searchParams.get("maxPrice") ?? "";
     const q = searchParams.get("q") ?? "";
@@ -98,6 +103,7 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
       types: type && PROPERTY_TYPES.includes(type as PropertyType) ? [type as PropertyType] : [],
       secondary: secondary && secondaryOptions.includes(secondary) ? secondary : "All",
       minBeds: Number.isFinite(minBeds) ? Math.min(Math.max(minBeds, 0), 5) : 0,
+      minBaths: Number.isFinite(minBaths) ? Math.min(Math.max(minBaths, 0), 5) : 0,
       minPrice,
       maxPrice,
     };
@@ -176,6 +182,9 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
       : []),
     ...(filters.minBeds > 0
       ? [{ label: bedLabel(filters.minBeds), onRemove: () => updateFilters({ minBeds: 0 }) }]
+      : []),
+    ...(filters.minBaths > 0
+      ? [{ label: bathLabel(filters.minBaths), onRemove: () => updateFilters({ minBaths: 0 }) }]
       : []),
     ...(filters.minPrice || filters.maxPrice
       ? [{ label: "Price range", onRemove: () => updateFilters({ minPrice: "", maxPrice: "" }) }]
@@ -301,6 +310,21 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
                     onClick={() => updateFilters({ secondary: opt })}
                   >
                     {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className={styles.morePanelSection}>
+              <div className={styles.morePanelTitle}>Bathrooms</div>
+              <div className={styles.pillRow}>
+                {BATH_OPTIONS.map((n) => (
+                  <button
+                    key={n}
+                    type="button"
+                    className={filters.minBaths === n ? styles.pillActive : styles.pill}
+                    onClick={() => updateFilters({ minBaths: n })}
+                  >
+                    {bathLabel(n)}
                   </button>
                 ))}
               </div>

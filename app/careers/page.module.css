@@ -1,0 +1,191 @@
+.page {
+  padding-bottom: var(--space-24);
+}
+
+.header {
+  background: var(--bh-mist);
+  padding: var(--space-12) 0 var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--type-display-md);
+  margin-top: var(--space-2);
+  max-width: 720px;
+}
+
+.subtitle {
+  font-family: var(--font-epic);
+  font-size: var(--type-body-l);
+  color: var(--fg-muted);
+  max-width: 620px;
+  margin-bottom: var(--space-2);
+}
+
+.section {
+  padding: var(--space-24) 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--type-display-sm);
+  color: var(--fg-default);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-12);
+  max-width: 640px;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.benefitCard {
+  background: var(--bh-bone);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.benefitCard i {
+  font-size: 28px;
+  color: var(--bh-powder-blue);
+}
+
+.benefitTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--fg-default);
+}
+
+.benefitCard p {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  color: var(--fg-muted);
+}
+
+.rolesSection {
+  background: var(--bh-bone);
+  padding: var(--space-24) 0;
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.roleRow {
+  background: var(--bh-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.roleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.roleTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--fg-default);
+}
+
+.roleType {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s);
+  color: var(--bh-denim-blue);
+  font-weight: 600;
+}
+
+.roleBody {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m);
+  color: var(--fg-muted);
+  margin-top: var(--space-2);
+  max-width: 560px;
+}
+
+.applyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--type-body-m);
+  color: var(--fg-default);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.applyBtn:hover {
+  background: var(--bg-muted);
+}
+
+.fallbackNote {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border-default);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fallbackNote p {
+  font-family: var(--font-sans);
+  color: var(--fg-muted);
+}
+
+.fallbackNote a {
+  color: var(--bh-denim-blue);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .roleRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .applyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+}

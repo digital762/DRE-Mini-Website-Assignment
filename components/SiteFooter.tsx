@@ -42,9 +42,9 @@ const COLUMNS: { title: string; items: { label: string; href: string }[] }[] = [
   {
     title: "Company",
     items: [
-      { label: "About", href: "/#why-betterhomes" },
+      { label: "About", href: "/about" },
       { label: "Agents", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
   },
