@@ -16,9 +16,8 @@ export function Hero() {
           <div className={styles.eyebrow}>Homegrown since 1986</div>
           <h1 className={styles.headline}>We know Dubai because we helped build it.</h1>
           <p className={styles.sub}>
-            A curated portfolio of Dubai&apos;s most sought-after addresses, handled by agents who
-            specialise by neighbourhood &mdash; from Betterhomes, the city&apos;s residential broker
-            for forty years.
+            Every listing here has an agent behind it who has actually walked the building, not
+            just read the brochure. Homegrown in Dubai since 1986, still run the same way.
           </p>
         </div>
       </div>

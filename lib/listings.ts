@@ -32,7 +32,7 @@ function gallery(id: string, count: number): GalleryPhoto[] {
   });
 }
 
-const AGENTS: Record<string, Agent> = {
+export const AGENTS: Record<string, Agent> = {
   priya: {
     name: "Priya Sharma",
     role: "Senior agent",

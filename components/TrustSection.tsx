@@ -5,7 +5,7 @@ import styles from "./TrustSection.module.css";
 const STATS = [
   { value: "1986", label: "Founded in Dubai" },
   { value: "40,000+", label: "Deals closed" },
-  { value: "300+", label: "Agents across the city" },
+  { value: "250+", label: "Agents across the city" },
   { value: "15", label: "Communities covered" },
 ];
 
@@ -15,12 +15,13 @@ export function TrustSection() {
       <div className={`bh-container ${styles.inner}`}>
         <div className={styles.copy}>
           <div className="bh-eyebrow">Why betterhomes</div>
-          <h2 className={styles.heading}>Forty years of knowing this city.</h2>
+          <h2 className={styles.heading}>Experience matters.</h2>
           <p className={styles.body}>
-            Betterhomes started at a small desk in Linda&apos;s dining room, long before Dubai
-            Marina existed. We&apos;ve watched the city grow from the ground up, and we still
-            work the same way: agents who specialise by neighbourhood, straight advice, and no
-            pressure to close.
+            We started at a small desk in Linda&apos;s dining room, long before Dubai Marina
+            existed, and grew up alongside this city rather than arriving to sell it. These days
+            that means an agent who knows your building, straight answers even when they&apos;re
+            not what you want to hear, and somewhere in Dubai, a family moving into a new home
+            roughly every thirty minutes.
           </p>
           <div className={styles.estRow}>
             <EstBadge size={20} />

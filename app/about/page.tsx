@@ -32,8 +32,8 @@ const MILESTONES = [
   },
   {
     year: "Today",
-    title: "300+ agents, 15 communities",
-    body: "betterhomes covers Dubai end to end, still run on the same principle Linda started with: know the building, know the buyer, tell the truth.",
+    title: "250+ agents, 15 communities",
+    body: "betterhomes covers Dubai end to end, and somewhere in the city a family moves into a new home roughly every thirty minutes. Still run on the same principle Linda started with: know the building, know the buyer, tell the truth.",
   },
 ];
 

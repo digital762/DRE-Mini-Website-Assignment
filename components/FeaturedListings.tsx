@@ -11,11 +11,11 @@ export function FeaturedListings() {
       <div className="bh-container">
         <div className={styles.headerRow}>
           <div>
-            <div className="bh-eyebrow">Hot properties</div>
-            <h2 className={styles.heading}>This week, across the city.</h2>
+            <div className="bh-eyebrow">On the market</div>
+            <h2 className={styles.heading}>What our agents are showing this week.</h2>
           </div>
           <Button href="/properties-for-sale" variant="ghost" iconRight="arrow-right">
-            View all listings
+            See every listing
           </Button>
         </div>
 
