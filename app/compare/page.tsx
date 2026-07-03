@@ -19,7 +19,8 @@ export default function ComparePage() {
           <div className="bh-eyebrow">Compare</div>
           <h1 className={styles.emptyTitle}>Nothing to compare yet.</h1>
           <p className={styles.emptySub}>
-            Tick &ldquo;Compare&rdquo; on any listing card to line properties up side by side.
+            Tick &ldquo;Compare&rdquo; on any listing card and we&apos;ll line them up here, side by
+            side, so you&apos;re not holding five browser tabs in your head.
           </p>
           <Button href="/properties-for-sale" variant="primary" iconRight="arrow-right">
             Browse listings
@@ -46,7 +47,7 @@ export default function ComparePage() {
           </button>
         </div>
         {count === 1 && (
-          <p className={styles.hint}>Add another property from the listings page for a fuller comparison.</p>
+          <p className={styles.hint}>Add one more property and you&apos;ll actually have something to compare.</p>
         )}
 
         <div className={styles.tableScroll}>

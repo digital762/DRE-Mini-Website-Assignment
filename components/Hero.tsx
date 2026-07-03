@@ -17,7 +17,7 @@ export function Hero() {
           <h1 className={styles.headline}>We know Dubai because we helped build it.</h1>
           <p className={styles.sub}>
             Every listing here has an agent behind it who has actually walked the building, not
-            just read the brochure. Homegrown in Dubai since 1986, still run the same way.
+            just read the brochure. Forty years in, that&apos;s still the whole job.
           </p>
         </div>
       </div>

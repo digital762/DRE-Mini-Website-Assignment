@@ -69,7 +69,7 @@ export default function AboutPage() {
           <h1 className={styles.title}>Forty years in the making.</h1>
           <p className={styles.subtitle}>
             betterhomes has been Dubai&apos;s residential broker since before the Marina existed.
-            Here&apos;s how a desk in a dining room became a 300-agent brokerage.
+            Here&apos;s how a desk in a dining room became a 250-agent brokerage.
           </p>
         </div>
       </div>

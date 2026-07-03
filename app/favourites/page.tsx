@@ -16,12 +16,12 @@ export default function FavouritesPage() {
         <div className="bh-eyebrow">Saved</div>
         <h1 className={styles.title}>Your favourites.</h1>
         <p className={styles.subtitle}>
-          Saved to this browser &mdash; no account needed. {count > 0 ? `${count} saved.` : ""}
+          Saved to this browser, no account needed. {count > 0 ? `${count} saved so far.` : ""}
         </p>
 
         {count === 0 ? (
           <div className={styles.empty}>
-            <p>Nothing saved yet. Tap the heart on any listing to keep it here.</p>
+            <p>Nothing saved yet &mdash; tap the heart on any listing and it&apos;ll turn up here.</p>
             <Button href="/properties-for-sale" variant="primary" iconRight="arrow-right">
               Browse listings
             </Button>

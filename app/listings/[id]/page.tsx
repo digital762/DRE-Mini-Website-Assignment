@@ -180,7 +180,7 @@ export default async function ListingDetailPage({
               </a>
             </div>
             <a href={`mailto:${listing.agent.email}`} className={styles.enquireBtn}>
-              Enquire about this property
+              Ask about this property
             </a>
           </div>
         </aside>

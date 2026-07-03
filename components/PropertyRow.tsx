@@ -90,7 +90,7 @@ export function PropertyRow({ listing }: { listing: Listing }) {
         </div>
 
         <div className={styles.freshness}>
-          <i className="ph ph-clock" aria-hidden /> Agent last visited this property on {formatDate(listing.listedOn)}
+          <i className="ph ph-clock" aria-hidden /> Listed on {formatDate(listing.listedOn)}
         </div>
 
         <div className={styles.bottomRow}>

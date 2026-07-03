@@ -401,7 +401,10 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
 
           {results.length === 0 ? (
             <div className={styles.empty}>
-              <p>No {dealType === "Rent" ? "rentals" : "properties"} match those filters yet.</p>
+              <p>
+                Nothing matches those filters yet &mdash; try widening the{" "}
+                {dealType === "Rent" ? "budget or area" : "price range or community"}.
+              </p>
               <button
                 type="button"
                 onClick={() => {
@@ -457,11 +460,15 @@ export function PropertyExplorer({ dealType }: { dealType: DealType }) {
 
           <div className={styles.ctaCard}>
             <div className={styles.ctaTitle}>
-              {dealType === "Rent" ? "List your property for rent" : "Sell your property"}
+              {dealType === "Rent" ? "Have a property to rent out?" : "Thinking about selling?"}
             </div>
-            <p className={styles.ctaBody}>Connect with a specialist agent to secure the best deal, faster.</p>
+            <p className={styles.ctaBody}>
+              {dealType === "Rent"
+                ? "A specialist agent will price it properly and get it in front of the right tenants."
+                : "A specialist agent will walk you through pricing and timing before you list anything."}
+            </p>
             <a href="mailto:hello@bhomes.com" className={styles.ctaBtn}>
-              Get started <i className="ph ph-arrow-right" aria-hidden />
+              Talk to an agent <i className="ph ph-arrow-right" aria-hidden />
             </a>
           </div>
 
